@@ -9,6 +9,11 @@ snake[0] = {
 
 let direction = "right";
 
+let food = {
+    x: Math.floor(Math.random() * 15 + 1) * box,
+    y: Math.floor(Math.random() * 15 + 1) * box
+}
+
 function criarBG(){
     contex.fillStyle = "lightgreen";
     contex.fillRect(0, 0, 16 * box, 16 * box);
@@ -20,6 +25,11 @@ function criarCobrinha(){
         contex.fillRect(snake[i].x, snake[i].y, box, box);
 
     }
+}
+
+function drawFood(){
+    contex.fillStyle = "red";
+    contex.fillRect(food.x, food.y, box, box); 
 }
 
 document.addEventListener('keydown', update);
@@ -42,6 +52,7 @@ function iniciarJogo(){
 
     criarBG();
     criarCobrinha();
+    drawFood();
 
     let snakeX = snake[0].x;
     let snakeY = snake[0].y;
